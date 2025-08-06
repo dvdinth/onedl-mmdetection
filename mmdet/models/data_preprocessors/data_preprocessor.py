@@ -236,7 +236,7 @@ class BatchSyncRandomResize(nn.Module):
     def forward(
         self, inputs: Tensor, data_samples: List[DetDataSample]
     ) -> Tuple[Tensor, List[DetDataSample]]:
-        """resize a batch of images and bboxes to shape ``self._input_size``"""
+        """Resize a batch of images and bboxes to shape ``self._input_size``"""
         h, w = inputs.shape[-2:]
         if self._input_size is None:
             self._input_size = (h, w)
@@ -599,7 +599,7 @@ class BatchResize(nn.Module):
     def forward(
         self, inputs: Tensor, data_samples: List[DetDataSample]
     ) -> Tuple[Tensor, List[DetDataSample]]:
-        """resize a batch of images and bboxes."""
+        """Resize a batch of images and bboxes."""
 
         batch_height, batch_width = inputs.shape[-2:]
         target_height, target_width, scale = self.get_target_size(
@@ -765,8 +765,8 @@ class BoxInstDataPreprocessor(DetDataPreprocessor):
                 images_lab = images_lab.permute(2, 0, 1)[None]
                 images_color_similarity = self.get_images_color_similarity(
                     images_lab, img_masks[im_i])
-                pairwise_mask = (images_color_similarity >=
-                                 self.pairwise_color_thresh).float()
+                pairwise_mask = (images_color_similarity
+                                 >= self.pairwise_color_thresh).float()
 
                 per_im_bboxes = data_sample.gt_instances.bboxes
                 if per_im_bboxes.shape[0] > 0:

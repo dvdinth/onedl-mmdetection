@@ -158,15 +158,6 @@ class SpatialReductionAttention(MultiheadAttention):
             # The ret[0] of build_norm_layer is norm name.
             self.norm = build_norm_layer(norm_cfg, embed_dims)[1]
 
-        # handle the BC-breaking from https://github.com/open-mmlab/mmcv/pull/1418 # noqa
-        from mmdet import digit_version, mmcv_version
-        if mmcv_version < digit_version('1.3.17'):
-            warnings.warn('The legacy version of forward function in'
-                          'SpatialReductionAttention is deprecated in'
-                          'mmcv>=1.3.17 and will no longer support in the'
-                          'future. Please upgrade your mmcv.')
-            self.forward = self.legacy_forward
-
     def forward(self, x, hw_shape, identity=None):
 
         x_q = x
@@ -199,7 +190,7 @@ class SpatialReductionAttention(MultiheadAttention):
         return identity + self.dropout_layer(self.proj_drop(out))
 
     def legacy_forward(self, x, hw_shape, identity=None):
-        """multi head attention forward in mmcv version < 1.3.17."""
+        """Multi head attention forward in mmcv version < 1.3.17."""
         x_q = x
         if self.sr_ratio > 1:
             x_kv = nlc_to_nchw(x, hw_shape)

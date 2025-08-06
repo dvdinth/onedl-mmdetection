@@ -108,19 +108,19 @@ class BBoxHead(BaseModule):
     # TODO: Create a SeasawBBoxHead to simplified logic in BBoxHead
     @property
     def custom_cls_channels(self) -> bool:
-        """get custom_cls_channels from loss_cls."""
+        """Get custom_cls_channels from loss_cls."""
         return getattr(self.loss_cls, 'custom_cls_channels', False)
 
     # TODO: Create a SeasawBBoxHead to simplified logic in BBoxHead
     @property
     def custom_activation(self) -> bool:
-        """get custom_activation from loss_cls."""
+        """Get custom_activation from loss_cls."""
         return getattr(self.loss_cls, 'custom_activation', False)
 
     # TODO: Create a SeasawBBoxHead to simplified logic in BBoxHead
     @property
     def custom_accuracy(self) -> bool:
-        """get custom_accuracy from loss_cls."""
+        """Get custom_accuracy from loss_cls."""
         return getattr(self.loss_cls, 'custom_accuracy', False)
 
     def forward(self, x: Tuple[Tensor]) -> tuple:
@@ -599,8 +599,8 @@ class BBoxHead(BaseModule):
         Example:
             >>> # xdoctest: +REQUIRES(module:kwarray)
             >>> import numpy as np
-            >>> from mmdet.models.task_modules.samplers.
-            ... sampling_result import random_boxes
+            >>> from mmdet.models.task_modules.samplers.sampling_result \
+            >>>     import random_boxes
             >>> from mmdet.models.task_modules.samplers import SamplingResult
             >>> self = BBoxHead(reg_class_agnostic=True)
             >>> n_roi = 2

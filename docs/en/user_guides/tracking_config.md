@@ -33,7 +33,7 @@ A complete config usually contains the following primary fields:
 When submitting jobs using `tools/train.py` or `tools/test_tracking.py`,
 you may specify `--cfg-options` to in-place modify the config.
 We present several examples as follows.
-For more details, please refer to [MMEngine](https://github.com/open-mmlab/mmengine/blob/main/docs/en/tutorials/config.md).
+For more details, please refer to [MMEngine](https://github.com/vbti-development/onedl-mmengine/blob/main/docs/en/tutorials/config.md).
 
 - **Update config keys of dict chains.**
 
@@ -72,7 +72,7 @@ then modify the necessary fields in the config files.
 If you are building an entirely new method that does not share the structure with any of the existing methods,
 you may create a folder `method_name` under `configs`.
 
-Please refer to [MMEngine](https://github.com/open-mmlab/mmengine/blob/main/docs/en/tutorials/config.md) for detailed documentation.
+Please refer to [MMEngine](https://github.com/vbti-development/onedl-mmengine/blob/main/docs/en/tutorials/config.md) for detailed documentation.
 
 ## Config Name Style
 
@@ -93,14 +93,14 @@ We follow the below style to name config files. Contributors are advised to foll
 **Ignore some fields in the base configs**
 
 Sometimes, you may set `_delete_=True` to ignore some of fields in base configs.
-You may refer to [MMEngine](https://github.com/open-mmlab/mmengine/blob/main/docs/en/tutorials/config.md) for simple illustration.
+You may refer to [MMEngine](https://github.com/vbti-development/onedl-mmengine/blob/main/docs/en/tutorials/config.md) for simple illustration.
 
 ## Tracking Data Structure Introduction
 
 ### Advantages and new features
 
 In mmdetection tracking task, we employ videos to organize the dataset and use
-TrackDataSample to descirbe dataset info.
+TrackDataSample to describe dataset info.
 
 - Based on video organization, we provide transform `UniformRefFrameSample` to sample key frames and ref frames and use `TransformBroadcaster` for for clip training.
 - TrackDataSample can be viewd as a wrapper of multiple DetDataSample to some extent. It contains a property `video_data_samples` which is a list of DetDataSample, each of which corresponds to a single frame. In addition, it's metainfo includes key_frames_inds and ref_frames_inds to apply clip training way.

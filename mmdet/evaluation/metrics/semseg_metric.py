@@ -22,7 +22,7 @@ from mmdet.registry import METRICS
 
 @METRICS.register_module()
 class SemSegMetric(BaseMetric):
-    """mIoU evaluation metric.
+    """MIoU evaluation metric.
 
     Args:
         iou_metrics (list[str] | str): Metrics to be calculated, the options
@@ -123,7 +123,8 @@ class SemSegMetric(BaseMetric):
 
         # summary table
         ret_metrics_summary = OrderedDict({
-            ret_metric: np.round(np.nanmean(ret_metric_value) * 100, 2)
+            ret_metric:
+            np.round(np.nanmean(ret_metric_value) * 100, 2)
             for ret_metric, ret_metric_value in ret_metrics.items()
         })
         metrics = dict()
@@ -188,7 +189,7 @@ class SemSegMetric(BaseMetric):
         """
 
         def f_score(precision, recall, beta=1):
-            """calculate the f-score value.
+            """Calculate the f-score value.
 
             Args:
                 precision (float | torch.Tensor): The precision value.
@@ -256,7 +257,8 @@ def print_semantic_table(
     # each class table
     results.pop('aAcc', None)
     ret_metrics_class = OrderedDict({
-        ret_metric: np.round(ret_metric_value * 100, 2)
+        ret_metric:
+        np.round(ret_metric_value * 100, 2)
         for ret_metric, ret_metric_value in results.items()
     })
 

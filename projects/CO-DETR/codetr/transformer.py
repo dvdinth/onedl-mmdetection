@@ -500,7 +500,7 @@ class DeformableDetrTransformer(Transformer):
             # class (foreground) because we use [0, num_classes - 1] to
             # indicate class labels, background class is indicated by
             # num_classes (similar convention in RPN).
-            # See https://github.com/open-mmlab/mmdetection/blob/master/mmdet/models/dense_heads/deformable_detr_head.py#L241 # noqa
+            # See https://github.com/vbti-development/onedl-mmdetection/blob/master/mmdet/models/dense_heads/deformable_detr_head.py#L241 # noqa
             # This follows the official implementation of Deformable DETR.
             topk_proposals = torch.topk(
                 enc_outputs_class[..., 0], topk, dim=1)[1]
@@ -539,8 +539,8 @@ class DeformableDetrTransformer(Transformer):
 
         inter_references_out = inter_references
         if self.as_two_stage:
-            return inter_states, init_reference_out,\
-                inter_references_out, enc_outputs_class,\
+            return inter_states, init_reference_out, \
+                inter_references_out, enc_outputs_class, \
                 enc_outputs_coord_unact
         return inter_states, init_reference_out, \
             inter_references_out, None, None
@@ -867,11 +867,11 @@ class CoDeformableDetrTransformer(DeformableDetrTransformer):
         inter_references_out = inter_references
         if self.as_two_stage:
             if return_encoder_output:
-                return inter_states, init_reference_out,\
-                    inter_references_out, enc_outputs_class,\
+                return inter_states, init_reference_out, \
+                    inter_references_out, enc_outputs_class, \
                     enc_outputs_coord_unact, memory
-            return inter_states, init_reference_out,\
-                inter_references_out, enc_outputs_class,\
+            return inter_states, init_reference_out, \
+                inter_references_out, enc_outputs_class, \
                 enc_outputs_coord_unact
         if return_encoder_output:
             return inter_states, init_reference_out, \

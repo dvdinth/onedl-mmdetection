@@ -110,7 +110,7 @@ class LoadMultiChannelImageFromFiles(BaseTransform):
             raise RuntimeError(
                 'The `file_client_args` is deprecated, '
                 'please use `backend_args` instead, please refer to'
-                'https://github.com/open-mmlab/mmdetection/blob/main/configs/_base_/datasets/coco_detection.py'  # noqa: E501
+                'https://github.com/vbti-development/onedl-mmdetection/blob/main/configs/_base_/datasets/coco_detection.py'  # noqa: E501
             )
 
     def transform(self, results: dict) -> dict:
@@ -358,7 +358,7 @@ class LoadAnnotations(MMCV_LoadAnnotations):
                     instance['ignore_flag'] = 1
                     gt_mask = [np.zeros(6)]
             elif not self.poly2mask:
-                # `PolygonMasks` requires a ploygon of format List[np.array],
+                # `PolygonMasks` requires a polygon of format List[np.array],
                 # other formats are invalid.
                 instance['ignore_flag'] = 1
                 gt_mask = [np.zeros(6)]

@@ -47,8 +47,8 @@ class AnchorGenerator:
             structure. Defaults to False.
 
     Examples:
-        >>> from mmdet.models.task_modules.
-        ... prior_generators import AnchorGenerator
+        >>> from mmdet.models.task_modules.prior_generators \
+            import AnchorGenerator
         >>> self = AnchorGenerator([16], [1.], [1.], [9])
         >>> all_anchors = self.grid_priors([(2, 2)], device='cpu')
         >>> print(all_anchors)
@@ -124,13 +124,13 @@ class AnchorGenerator:
 
     @property
     def num_base_anchors(self) -> List[int]:
-        """list[int]: total number of base anchors in a feature grid"""
+        """List[int]: total number of base anchors in a feature grid."""
         return self.num_base_priors
 
     @property
     def num_base_priors(self) -> List[int]:
-        """list[int]: The number of priors (anchors) at a point
-        on the feature grid"""
+        """List[int]: The number of priors (anchors) at a point on the feature
+        grid."""
         return [base_anchors.size(0) for base_anchors in self.base_anchors]
 
     @property
@@ -677,8 +677,8 @@ class LegacyAnchorGenerator(AnchorGenerator):
             structure. Defaults to False.
 
     Examples:
-        >>> from mmdet.models.task_modules.
-        ... prior_generators import LegacyAnchorGenerator
+        >>> from mmdet.models.task_modules.prior_generators import \
+            LegacyAnchorGenerator
         >>> self = LegacyAnchorGenerator(
         >>>     [16], [1.], [1.], [9], center_offset=0.5)
         >>> all_anchors = self.grid_anchors(((2, 2),), device='cpu')
