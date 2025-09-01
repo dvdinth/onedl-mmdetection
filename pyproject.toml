@@ -19,6 +19,7 @@ classifiers = [
     "Topic :: Scientific/Engineering :: Artificial Intelligence",
 ]
 dependencies = [
+    "imgaug",
     "matplotlib",
     "numpy",
     "pycocotools",
@@ -38,6 +39,7 @@ tests = [
     "asynctest",
     "cityscapesscripts",
     "codecov",
+    "faster-coco-eval",
     "imagecorruptions",
     "instaboostfast",
     "interrogate",
@@ -95,6 +97,7 @@ optional = [
     "cityscapesscripts",
     "emoji",
     "fairscale",
+    "faster-coco-eval",
     "imagecorruptions",
     "scikit-learn",
 ]
