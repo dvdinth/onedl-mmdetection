@@ -19,18 +19,19 @@ conda create --name onedllab python=3.8 -y
 conda activate onedllab
 ```
 
-**Step 2.** Install PyTorch following [official instructions](https://pytorch.org/get-started/locally/), e.g.
+**Step 2.** Install PyTorch following [official instructions](https://pytorch.org/get-started/locally/). Make sure to
+install a version that is supported in the released [mmwheels](https://mmwheels.onedl.ai/), e.g.
 
 On GPU platforms:
 
 ```shell
-conda install pytorch torchvision -c pytorch
+pip install torch==2.8.0 torchvision==0.23.0 --index-url https://download.pytorch.org/whl/cu129
 ```
 
 On CPU platforms:
 
 ```shell
-conda install pytorch torchvision cpuonly -c pytorch
+pip install torch==2.8.0 torchvision==0.23.0 --index-url https://download.pytorch.org/whl/cpu
 ```
 
 ## Installation
