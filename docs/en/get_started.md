@@ -43,30 +43,32 @@ We recommend that users follow our best practices to install MMDetection. Howeve
 **Step 0.** Install [MMEngine](https://github.com/vbti-development/onedl-mmengine) and [MMCV](https://github.com/vbti-development/onedl-mmcv) using [MIM](https://github.com/vbti-development/onedl-mim).
 
 ```shell
-pip install -U openmim
-mim install mmengine
-mim install "mmcv>=2.0.0"
+pip install onedl-mim
+mim install onedl-mmengine
+mim install onedl-mmcv
 ```
-
-**Note:** In MMCV-v2.x, `mmcv-full` is rename to `mmcv`, if you want to install `mmcv` without CUDA ops, you can use `mim install "mmcv-lite>=2.0.0rc1"` to install the lite version.
 
 **Step 1.** Install MMDetection.
 
-Case a: If you develop and run mmdet directly, install it from source:
+Case a: If you develop and run onedl-mmdetection directly, install it from source:
 
 ```shell
 git clone https://github.com/vbti-development/onedl-mmdetection.git
-cd mmdetection
+cd onedl-mmdetection
 pip install -v -e .
 # "-v" means verbose, or more output
 # "-e" means installing a project in editable mode,
 # thus any local modifications made to the code will take effect without reinstallation.
+# if you want all optional dependencies, use:
+# pip install -v -e ".[optional]"
 ```
 
-Case b: If you use mmdet as a dependency or third-party package, install it with MIM:
+Case b: If you use onedl-mmdetection as a dependency or third-party package, install it with MIM:
 
 ```shell
-mim install mmdet
+mim install onedl-mmdetection
+# if you want all optional dependencies, use:
+# mim install onedl-mmdetection[optional]
 ```
 
 ## Verify the installation
@@ -76,12 +78,12 @@ To verify whether MMDetection is installed correctly, we provide some sample cod
 **Step 1.** We need to download config and checkpoint files.
 
 ```shell
-mim download mmdet --config rtmdet_tiny_8xb32-300e_coco --dest .
+mim download onedl-mmdetection --config rtmdet_tiny_8xb32-300e_coco --dest .
 ```
 
 The downloading will take several seconds or more, depending on your network environment. When it is done, you will find two files `rtmdet_tiny_8xb32-300e_coco.py` and `rtmdet_tiny_8xb32-300e_coco_20220902_112414-78e30dcc.pth` in your current folder.
 
-**Step 2.** Verify the inference demo.
+**Step 2.** Verify the inference demo. You need to have optional dependencies installed for this to work (e.g. `mim install onedl-mmdetection[optional]`)
 
 Case a: If you install MMDetection from source, just run the following command.
 
@@ -113,9 +115,9 @@ We recommend that users follow our best practices to install MMDetection for tra
 **Step 0.** Install [MMEngine](https://github.com/vbti-development/onedl-mmengine) and [MMCV](https://github.com/vbti-development/onedl-mmcv) using [MIM](https://github.com/vbti-development/onedl-mim).
 
 ```shell
-pip install -U openmim
-mim install mmengine
-mim install "mmcv>=2.0.0"
+pip install onedl-mim
+mim install onedl-mmengine
+mim install onedl-mmcv
 ```
 
 **Step 1.** Install MMDetection.
@@ -124,8 +126,8 @@ Case a: If you develop and run mmdet directly, install it from source:
 
 ```shell
 git clone https://github.com/vbti-development/onedl-mmdetection.git
-cd mmdetection
-pip install -v -e . -r requirements/tracking.txt
+cd onedl-mmdetection
+pip install -v -e ".[tracking,optional]"
 # "-v" means verbose, or more output
 # "-e" means installing a project in editable mode,
 # thus any local modifications made to the code will take effect without reinstallation.
@@ -134,7 +136,7 @@ pip install -v -e . -r requirements/tracking.txt
 Case b: If you use mmdet as a dependency or third-party package, install it with MIM:
 
 ```shell
-mim install mmdet[tracking]
+mim install onedl-mmdetection[tracking,optional]
 ```
 
 **Step 2.** Install TrackEval.
@@ -150,7 +152,7 @@ To verify whether MMDetection is installed correctly, we provide some sample cod
 **Step 1.** We need to download config and checkpoint files.
 
 ```shell
-mim download mmdet --config bytetrack_yolox_x_8xb4-amp-80e_crowdhuman-mot17halftrain_test-mot17halfval --dest .
+mim download onedl-mmdetection --config bytetrack_yolox_x_8xb4-amp-80e_crowdhuman-mot17halftrain_test-mot17halfval --dest .
 ```
 
 The downloading will take several seconds or more, depending on your network environment. When it is done, you will find two files `bytetrack_yolox_x_8xb4-amp-80e_crowdhuman-mot17halftrain_test-mot17halfval.py` and `bytetrack_yolox_x_crowdhuman_mot17-private-half_20211218_205500-1985c9f0.pth` in your current folder.
@@ -189,7 +191,7 @@ To install MMEngine with pip instead of MIM, please follow [MMEngine installatio
 For example, you can install MMEngine by the following command.
 
 ```shell
-pip install mmengine
+pip install onedl-mmengine
 ```
 
 #### Install MMCV without MIM
@@ -201,7 +203,7 @@ To install MMCV with pip instead of MIM, please follow [MMCV installation guides
 For example, the following command installs MMCV built for PyTorch 1.12.x and CUDA 11.6.
 
 ```shell
-pip install "mmcv>=2.0.0" -f https://mmassets.onedl.ai/mmcv/dist/cu116/torch1.12.0/index.html
+pip install onedl-mmcv -f https://mmassets.onedl.ai/mmcv/dist/cu116/torch1.12.0/index.html
 ```
 
 #### Install on CPU-only platforms
@@ -241,16 +243,16 @@ thus we only need to install MMEngine, MMCV, and MMDetection with the following 
 **Step 1.** Install [MMEngine](https://github.com/vbti-development/onedl-mmengine) and [MMCV](https://github.com/vbti-development/onedl-mmcv) using [MIM](https://github.com/vbti-development/onedl-mim).
 
 ```shell
-!pip3 install openmim
-!mim install mmengine
-!mim install "mmcv>=2.0.0,<2.1.0"
+!pip3 install onedl-mim
+!mim install onedl-mmengine
+!mim install onedl-mmcv
 ```
 
 **Step 2.** Install MMDetection from the source.
 
 ```shell
 !git clone https://github.com/vbti-development/onedl-mmdetection.git
-%cd mmdetection
+%cd onedl-mmdetection
 !pip install -e .
 ```
 
